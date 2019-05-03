@@ -8,7 +8,7 @@ We have made sure this project so simple that any sort of update, modification a
 
 This Project is a game, similar to the _T-Rex Runner_ game found in Chrome browsers, but with a logical twist. It's been christened the **Logical Maze Runner**, and this game is intended to provide the user with a **_once in a lifetime experience_**(we believe the player might never wish to play again)
 
-This 2D game provides the player with a magic wand, and this wand is able to yield two weapons: _a fire weapon and a water weapon_. Similarly, the player is faced with two adversaries, _a fire monster and a water monster_. The player is able to kill the adversary by yielding the weapon of it's opposite type, i.e. **fire kills water, and water kills fire**.
+This 2D retro game provides the player with a magic wand, and this wand is able to yield two weapons: _a fire weapon and a water weapon_. Similarly, the player is faced with two adversaries, _a fire monster and a water monster_. The player is able to kill the adversary by yielding the weapon of it's opposite type, i.e. **fire kills water, and water kills fire**.
 
 The crux of this game is the _wave-like speed control_... This is implemented by the `runner.Game.updateGameSpeed()` functione, which constantly updates the speed of the game by modifying the frame-rate, in a sine-wave like fashion. The game gradually increases its speed(representing a _wave_) and then gradually decreases the speed(representing the _passing of a wave_).
 
