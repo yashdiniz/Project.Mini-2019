@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_171-b11 (Oracle Corporation)
+Class-Path: lib/mysql-connector-java-5.1.23-bin.jar
+Main-Class: runner.Runner
+
