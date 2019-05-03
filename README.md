@@ -25,7 +25,7 @@ The `tileslow.png` file, is designed to contain all the player images(as a singl
 
 Based on the MySQL database configuration setup within your system, you will need to modify the database connection, the username and password in the list of DB variables in `Config.java`.
 _(default configs are "jdbc:mysql://localhost:3306/runnerscoreDB", "root", ""), scores: (name, score)_.
-This means you are expected to have an SQL server, with the username _root_, having an _empty password_ a database _runnerscoreDB_, and a table called _scores_ with two columns: _name_ & _score_
+This means you are expected to have an SQL server, with an account bearing the username _root_, having an _empty password_ a database _runnerscoreDB_, and a table called _scores_ with two columns: _name_ & _score_
 
 ## Project Execution
 
