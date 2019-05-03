@@ -1,12 +1,12 @@
 # Java Mini Project 2019 - Logic Maze Runner
 
-This code is simply an illustration of projects given to us at our college. They help illustrate our skills and interest computer graphics, database integration and object oriented design, during our sophomore years.
+This code is simply an illustration of the projects given to us at our college. They help us illustrate our skills and interest computer graphics, database integration and object oriented design, given to us during our sophomore years.
 
-Ultimately, we have taken measures to keep this project so simple that any sort of update, modification and/or reuse is greatly simplified; by use of this README, and the internal documentation within the code.
+We have amde sure this project so simple that any sort of update, modification and/or reuse is greatly simplified; by use of this README, and the internal documentation within the code.
 
 ## Project Summary
 
-This Project is a game, similar to the _T-Rex Runner_ game found in Chrome browsers, but with a logical twist. It's been christened the **Logical Maze Runner**, and this game is intended to provide the user with a **_once in a lifetime experience_**.(we believe the player might never wish to play again)
+This Project is a game, similar to the _T-Rex Runner_ game found in Chrome browsers, but with a logical twist. It's been christened the **Logical Maze Runner**, and this game is intended to provide the user with a **_once in a lifetime experience_**(we believe the player might never wish to play again)
 
 This 2D game provides the player with a magic wand, and this wand is able to yield two weapons: _a fire weapon and a water weapon_. Similarly, the player is faced with two adversaries, _a fire monster and a water monster_. The player is able to kill the adversary by yielding the weapon of it's opposite type, i.e. **fire kills water, and water kills fire**.
 
@@ -40,6 +40,6 @@ This should run the project as an executable jar file.
 
 ## Conclusion
 
-I am sharing my opinion here, but honestly, Java is a language entering that phase where only maintainers need to know about it(like PHP). I agree that learning Java does help educate budding engineers about the basic concepts of Object Oriented Programming, but other than that, I would recommend the newer generation of developers to take to newer and more abstract languages. DevSecOps is a huge ecosystem, and I do not wish to bias minds with a list of languages that must be learnt. In the end, _engineering is about solving problems your way_, and benefitting the masses, including the engineering community. How you implement a solution, which frameworks/platforms you choose, do not matter unless it may lead to problems in the future.
+I am sharing my opinion here, but honestly, Java is a language entering that phase where only maintainers need to know about it(like PHP). I agree that learning Java does help educate budding engineers about the basic concepts of Object Oriented Programming, but other than that, I would recommend the newer generation of developers to take to newer and more abstract languages. DevSecOps is a huge ecosystem, and I do not wish to bias minds with a list of languages that must be learnt. In the end, _engineering is about solving problems your way_, and helping the masses, including the engineering community. How you implement a solution, which frameworks/platforms you choose, do not matter unless it may lead to problems in the future.
 
-This project has been uploaded to Github, and is not intended to portray any interest towards game development, and it should just be viewed as a project written by an individual interested in learning Computer Science as a whole. Thank you for reading this document!
+This project has been uploaded to Github, and is not intended to portray any interest towards game development, and it should just be viewed as a project written by an individual interested in learning Computer Science as a whole. Thank you for reading through this document!
