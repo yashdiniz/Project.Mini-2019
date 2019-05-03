@@ -24,7 +24,7 @@ This project contains a `Config.java` file, which contains a public class with a
 The `tileslow.png` file, is designed to contain all the player images(as a single image), and the image data is loaded in the form of _tiles_ into the program. This means that subimages of the main image are created. Not only does this save memory, but it also prevents the creation of too many streams, which turns out to be largely beneficial. Also, a lot of rectangular bound configuration variables need to be modified as well...
 
 Based on the MySQL database configuration setup within your system, you will need to modify the database connection, the username and password in the list of DB variables in `Config.java`.
-_(default configs are "jdbc:mysql://localhost:3306/runnerscoreDB", "root", ""), scores: (name, score)_
+_(default configs are "jdbc:mysql://localhost:3306/runnerscoreDB", "root", ""), scores: (name, score)_.
 This means you are expected to have an SQL server, with the username _root_, having an _empty password_ a database _runnerscoreDB_, and a table called _scores_ with two columns: _name_ & _score_
 
 ## Project Execution
