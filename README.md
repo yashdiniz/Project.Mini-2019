@@ -6,7 +6,7 @@ We have made sure this project so simple that any sort of update, modification a
 
 ## Project Summary
 
-This Project is a game, similar to the _T-Rex Runner_ game found in Chrome browsers, but with a logical twist. It's been christened the **Logical Maze Runner**, and this game is intended to provide the user with a **_once in a lifetime experience_**(we believe the player might never wish to play again)
+This Project is a game, similar to the _T-Rex Runner_ game found in Chrome browsers, but with a logical twist. It's been christened the **Logical Maze Runner**, and this game is intended to provide the user with a **_once in a lifetime experience_** (we believe the player might never wish to play again)
 
 This 2D retro game provides the player with a magic wand, and this wand is able to yield two weapons: _a fire weapon and a water weapon_. Similarly, the player is faced with two adversaries, _a fire monster and a water monster_. The player is able to kill the adversary by yielding the weapon of it's opposite type, i.e. **fire kills water, and water kills fire**.
 
