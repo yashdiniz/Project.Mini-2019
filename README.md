@@ -1,6 +1,6 @@
 # Java Mini Project 2019 - Logic Maze Runner
 
-This code is simply an illustration of the projects given to us at our college. They help us illustrate our skills and interest in computer graphics, database integration and object oriented design, during our sophomore years.
+This code is simply an example of the projects our college tells us to perform. They help us illustrate our skills and interest in computer graphics, database integration and object oriented design, during our sophomore years.
 
 We have made sure this project so simple that any sort of update, modification and/or reuse is greatly simplified; by use of this README, and the internal documentation within the code.
 
