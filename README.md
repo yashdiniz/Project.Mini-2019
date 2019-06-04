@@ -2,7 +2,7 @@
 
 This code is simply an example of the projects our college tells us to perform. They help us illustrate our skills and interest in computer graphics, database integration and object oriented design, as a sophomore, helping the teachers orient us in a better direction.
 
-We have made sure this project so simple that any sort of update, modification and/or reuse is greatly simplified; by use of this README, and the internal documentation within the code.
+We have tried our best to make sure that comprehending this project is greatly simplified; by use of this README, and the internal documentation within the code.
 
 ## Project Summary
 
@@ -10,7 +10,7 @@ This Project is a game, similar to the _T-Rex Runner_ game found in Chrome brows
 
 This 2D retro game provides the player with a magic wand, and this wand is able to yield two weapons: _a fire weapon and a water weapon_. Similarly, the player is faced with two adversaries, _a fire monster and a water monster_. The player is able to kill the adversary by yielding a weapon of it's opposite type, i.e. **fire kills water, and water kills fire**.
 
-The crux of this game is the _wave-like speed control_... This is implemented by the `runner.Game.updateGameSpeed()` functione, which constantly updates the speed of the game by modifying the frame-rate, in a sine-wave like fashion. The game gradually increases its speed(representing a _wave_) and then gradually decreases the speed(representing the _passing of a wave_).
+The crux of this game is the _wave-like speed control_... This is implemented by the `runner.Game.updateGameSpeed()` function, which constantly updates the speed of the game by modifying the frame-rate, in a sine-wave like fashion. The game gradually increases its speed(representing a _wave_) and then gradually decreases the speed(representing the _passing of a wave_).
 
 The project also has the score module, that saves its data into an SQL database(we were restricted from using noSQL technologies because we had to comply to the project instructions).
 
@@ -21,7 +21,7 @@ This project contains a `Config.java` file, which contains a public class with a
  + The SQL connector library, in a jar file, in the `lib/` folder of the project directory.
  + The actual code, in the `runner/` folder, under the `runner.*` package.
 
-The `tileslow.png` file, is designed to contain all the player images(as a single image), and the image data is loaded in the form of _tiles_ into the program. This means that subimages of the main image are created. Not only does this save memory, but it also prevents the creation of too many streams, which turns out to be largely beneficial. Also, a lot of rectangular bound configuration variables need to be modified as well...
+The `tileslow.png` file, is designed to contain all the player images(as a single image), and the image data is loaded in the form of _tiles_ into the program. This means that subimages of the main image are created. Not only does this save memory, but it also prevents the creation of too many streams, which turns out to be largely beneficial. Also, a lot of rectangular bound configuration variables need to be modified as well(found in the `Config.java` file)...
 
 Based on the MySQL database configuration setup within your system, you will need to modify the database connection, the username and password in the list of DB variables in `Config.java`.
 _(default configs are "jdbc:mysql://localhost:3306/runnerscoreDB", "root", ""), scores: (name, score)_.
