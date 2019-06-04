@@ -13,6 +13,7 @@ public class Config {
     public static final Font largeFont = new Font(relativeRoot + "res/VeraMono.ttf",Font.BOLD,20);
     public static final Font smallFont = new Font(relativeRoot + "res/VeraMono.ttf",Font.BOLD,14);
     
+    //these constants hold the database connection and Table information
     public static final String scoreDB = "jdbc:mysql://localhost:3306/RunnerScoreDB";
     public static final String DBuser = "root";
     public static final String DBpass = "";
