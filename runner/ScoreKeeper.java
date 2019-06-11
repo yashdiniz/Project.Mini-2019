@@ -7,9 +7,9 @@ import java.awt.*;
 import java.sql.*;
 import javax.swing.*;
 
-public class ScoreKeeper {
-    public static int score = 0;
-    
+class ScoreKeeper {
+    private static int score = 0;
+
     static void resetScore() {
         score = 0;
     }

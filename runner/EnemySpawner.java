@@ -8,11 +8,11 @@ package runner;
 import java.util.*;
 import java.awt.*;
 
-public class EnemySpawner {
-    Sprite waterWeapon, waterEnemy, fireWeapon, fireEnemy;
-    static Sprite currentEnemy; //current enemy chosen by the randomiser
-    static Sprite currentWeapon;
-    final static Random r = new Random();
+class EnemySpawner {
+    private Sprite waterWeapon, waterEnemy, fireWeapon, fireEnemy;
+    private static Sprite currentEnemy; //current enemy chosen by the randomiser
+    private static Sprite currentWeapon;
+    private final static Random r = new Random();
     
     EnemySpawner(Sprite waterWeapon, Sprite waterEnemy, Sprite fireWeapon, Sprite fireEnemy) { //takes the sprites and initialises them
         this.waterEnemy = waterEnemy;
@@ -22,7 +22,7 @@ public class EnemySpawner {
         
         if(Config.randomSeed!=0) r.setSeed(Config.randomSeed);   //sets the seed for the Spawner
     }
-    static boolean spriteSpawned = false;   //this boolean will make sure only one sprite is spawned at a time...
+    private static boolean spriteSpawned = false;   //this boolean will make sure only one sprite is spawned at a time...
     
     boolean isSpriteSpawned() {
         return spriteSpawned;
