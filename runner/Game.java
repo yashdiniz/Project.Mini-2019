@@ -13,11 +13,11 @@ import java.io.*;
 import javax.sound.sampled.*;
 
 public class Game extends JPanel implements ActionListener {
-    boolean gameOver = false, paused = false;    //this flag will store whether game is over
-    static BufferedImage background, playerImage, fireEnemyImage, waterEnemyImage, fireWeaponImage, waterWeaponImage; //stores all images
-    static BufferedImage tilesImage;    //this image buffer will hold all the tiles
+    private boolean gameOver = false;
+    boolean paused = false;    //this flag will store whether game is over
+    private static BufferedImage background;
     //this custom class holds various basic definitions of sprites on screen(remember, all these will be reusable!)
-    static Sprite player, waterEnemy, fireEnemy, waterWeapon, fireWeapon;
+    private static Sprite player;
     javax.swing.Timer refresh;  //refreshes the frame per second at 60fps
     
     private static float delay = Config.defaultDelay;  //default delay value when game starts
@@ -36,20 +36,22 @@ public class Game extends JPanel implements ActionListener {
             this.setBackground(new Color(225,225,225));     //sets background of the frame
             
             background = ImageIO.read(new FileInputStream(Config.bkgImagePath));
-            tilesImage = ImageIO.read(new FileInputStream(Config.tilesImagePath));
+            //this image buffer will hold all the tiles
+            BufferedImage tilesImage = ImageIO.read(new FileInputStream(Config.tilesImagePath));
             //gets a subimage(tile) out of the original image...
-            playerImage = tilesImage.getSubimage(Config.playerX, Config.playerY, Config.playerW, Config.playerH);
-            fireEnemyImage = tilesImage.getSubimage(Config.fireX, Config.fireY, Config.fireW, Config.fireH);
-            waterEnemyImage = tilesImage.getSubimage(Config.waterX, Config.waterY, Config.waterW, Config.waterH);
-            fireWeaponImage = tilesImage.getSubimage(Config.afireX, Config.afireY, Config.afireW, Config.afireH);
-            waterWeaponImage = tilesImage.getSubimage(Config.awaterX, Config.awaterY, Config.awaterW, Config.awaterH);
+            BufferedImage playerImage = tilesImage.getSubimage(Config.playerX, Config.playerY, Config.playerW, Config.playerH);
+            BufferedImage fireEnemyImage = tilesImage.getSubimage(Config.fireX, Config.fireY, Config.fireW, Config.fireH);
+            BufferedImage waterEnemyImage = tilesImage.getSubimage(Config.waterX, Config.waterY, Config.waterW, Config.waterH);
+            BufferedImage fireWeaponImage = tilesImage.getSubimage(Config.afireX, Config.afireY, Config.afireW, Config.afireH);
+            //stores all images
+            BufferedImage waterWeaponImage = tilesImage.getSubimage(Config.awaterX, Config.awaterY, Config.awaterW, Config.awaterH);
             
             //creates the initial sprites out of the images
             player = new Sprite(playerImage, Config.playerXpos, Config.playerYpos, Config.playerW, Config.playerH);
-            fireWeapon = new Sprite(fireWeaponImage, Config.weaponXpos, Config.weaponYpos, Config.afireW, Config.afireH);
-            waterWeapon = new Sprite(waterWeaponImage, Config.weaponXpos, Config.weaponYpos, Config.awaterW, Config.awaterH);
-            fireEnemy = new Sprite(fireEnemyImage, Config.frameWidth, Config.playerYpos, Config.fireW, Config.fireH);
-            waterEnemy = new Sprite(waterEnemyImage, Config.frameWidth, Config.playerYpos, Config.waterW, Config.waterH);
+            Sprite fireWeapon = new Sprite(fireWeaponImage, Config.weaponXpos, Config.weaponYpos, Config.afireW, Config.afireH);
+            Sprite waterWeapon = new Sprite(waterWeaponImage, Config.weaponXpos, Config.weaponYpos, Config.awaterW, Config.awaterH);
+            Sprite fireEnemy = new Sprite(fireEnemyImage, Config.frameWidth, Config.playerYpos, Config.fireW, Config.fireH);
+            Sprite waterEnemy = new Sprite(waterEnemyImage, Config.frameWidth, Config.playerYpos, Config.waterW, Config.waterH);
             //initialises the spawner
             spawner = new EnemySpawner(waterWeapon, waterEnemy, fireWeapon, fireEnemy);
             
@@ -83,7 +85,7 @@ public class Game extends JPanel implements ActionListener {
         ScoreKeeper.drawScore(g);
         if(isGamePaused()) g.drawString(Config.help, Config.helpX, Config.helpY);
     }
-    boolean rising = false;
+    private boolean rising = false;
     private void updateGameSpeed() {
         if(!gameOver && !paused) {    //meaning,the game is being played
             refresh.start();                        //start timer (if not already started)
@@ -109,7 +111,7 @@ public class Game extends JPanel implements ActionListener {
             if(enemy.intersects(player)) endGame();   //game over if enemy collides with player
         }
     }
-    void endGame(){
+    private void endGame(){
         gameOver = true;
         playSound(Config.gameOverSound);  //play the game over sound...
     }
@@ -123,7 +125,7 @@ public class Game extends JPanel implements ActionListener {
         spawner.spawnWeapon(w);            //spawns the weapon
         playSound(Config.weaponYieldSound); //play the weapon yield sound
     }
-    static synchronized void playSound(String path) {    //downloads audio to ram,clip.start plays it
+    private static synchronized void playSound(String path) {    //downloads audio to ram,clip.start plays it
         //source: https://stackoverflow.com/a/26318
         try {
             Clip clip = AudioSystem.getClip();

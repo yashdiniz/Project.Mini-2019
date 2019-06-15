@@ -7,7 +7,7 @@ package runner;
 import java.awt.event.*;
 
 public class RunnerKeyListener implements java.awt.event.KeyListener {
-    Game g;
+    private Game g;
     boolean paused = false;
     RunnerKeyListener(Game game) {
         g = game;
