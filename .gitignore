@@ -1,3 +1,5 @@
-
+# ignore the class files that are formed after compiling the code
+runner/*.class
+# ignore the intelliJ files
 Project.Mini-2019.iml
 .idea

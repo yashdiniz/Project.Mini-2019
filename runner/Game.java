@@ -43,7 +43,6 @@ public class Game extends JPanel implements ActionListener {
             BufferedImage fireEnemyImage = tilesImage.getSubimage(Config.fireX, Config.fireY, Config.fireW, Config.fireH);
             BufferedImage waterEnemyImage = tilesImage.getSubimage(Config.waterX, Config.waterY, Config.waterW, Config.waterH);
             BufferedImage fireWeaponImage = tilesImage.getSubimage(Config.afireX, Config.afireY, Config.afireW, Config.afireH);
-            //stores all images
             BufferedImage waterWeaponImage = tilesImage.getSubimage(Config.awaterX, Config.awaterY, Config.awaterW, Config.awaterH);
             
             //creates the initial sprites out of the images

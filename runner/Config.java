@@ -8,7 +8,7 @@ import java.awt.event.*;
 import java.awt.*;
 
 class Config {
-    private static final String relativeRoot = "src/";
+    private static final String relativeRoot = "/";
     
     static final Font largeFont = new Font(relativeRoot + "res/VeraMono.ttf",Font.BOLD,20);
     static final Font smallFont = new Font(relativeRoot + "res/VeraMono.ttf",Font.BOLD,14);
