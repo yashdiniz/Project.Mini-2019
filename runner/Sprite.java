@@ -7,17 +7,15 @@ package runner;
 import java.awt.*;
 
 class Sprite {
-    private Rectangle bounds;   //this object will hold the basic bounds(for collision detection)
-    private Image img;          //this object will hold the image of the sprite
+    private final Rectangle bounds;   //this object will hold the basic bounds(for collision detection)
+    private final Image img;          //this object will hold the image of the sprite
     int spriteX;
     private int spriteY;
 
     Sprite(Image i, int x, int y, int width, int height) {   //this constructor takes the image for the sprite
         img = i;
         //the cartesian coordinates of the sprite on window.
-        int height1;
-        int width1;
-        bounds = new Rectangle((spriteX=x), (spriteY=y), (width1 = width), (height1 = height));
+        bounds = new Rectangle((spriteX=x), (spriteY=y), width, height);
     }
     //function to check and return sprite intersection
     boolean intersects(Sprite y) {

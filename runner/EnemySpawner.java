@@ -9,7 +9,7 @@ import java.util.*;
 import java.awt.*;
 
 class EnemySpawner {
-    private Sprite waterWeapon, waterEnemy, fireWeapon, fireEnemy;
+    private final Sprite waterWeapon, waterEnemy, fireWeapon, fireEnemy;
     private static Sprite currentEnemy; //current enemy chosen by the randomiser
     private static Sprite currentWeapon;
     private final static Random r = new Random();

@@ -14,7 +14,7 @@ import javax.sound.sampled.*;
 
 public class Game extends JPanel implements ActionListener {
     private boolean gameOver = false;
-    boolean paused = false;    //this flag will store whether game is over
+    boolean paused = false;    //this flag will store whether game is over, or paused
     private static BufferedImage background;
     //this custom class holds various basic definitions of sprites on screen(remember, all these will be reusable!)
     private static Sprite player;
@@ -75,13 +75,13 @@ public class Game extends JPanel implements ActionListener {
         spawner.checkDeathByWeapon(enemy);   //call function to check if currentWeapon intersected currentEnemy
         
         updateGameSpeed(); //accelerate game on every paint...
+        ScoreKeeper.drawScore(g);
         if(gameOver) {
             g.setFont(Config.largeFont);
             g.setColor(Color.RED);
             g.drawString(Config.gameOver, Config.gameOverX, Config.gameOverY);
             g.setColor(Color.BLACK);
         }
-        ScoreKeeper.drawScore(g);
         if(isGamePaused()) g.drawString(Config.help, Config.helpX, Config.helpY);
     }
     private boolean rising = false;
