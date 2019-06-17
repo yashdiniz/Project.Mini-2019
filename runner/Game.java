@@ -20,8 +20,8 @@ public class Game extends JPanel implements ActionListener {
     private static Sprite player;
     javax.swing.Timer refresh;  //refreshes the frame per second at 60fps
     
-    private static float delay = Config.defaultDelay;  //default delay value when game starts
-    private static float acceleration = Config.defaultAcceleration; //rate at which to decrease the delay(thus increaing difficulty)
+    private static double delay = Config.defaultDelay;  //default delay value when game starts
+    private static double acceleration = Config.defaultAcceleration; //rate at which to decrease the delay(thus increaing difficulty)
     
     private static EnemySpawner spawner;   //bject,the spawner will spawn enemies, and check the player's weapon dispatched
     
@@ -54,7 +54,7 @@ public class Game extends JPanel implements ActionListener {
             //initialises the spawner
             spawner = new EnemySpawner(waterWeapon, waterEnemy, fireWeapon, fireEnemy);
             
-            refresh = new javax.swing.Timer((int)delay, this);  //this will be used to repaint by repeatedly causing actions
+            refresh = new javax.swing.Timer((int)delay, this);  //Timer is used to generate actionEvents at delay intervals...
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -66,23 +66,23 @@ public class Game extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         g.drawImage(background, 0, 0, null);     //draws the background
         //player.drawBounds(g);
-        player.drawSprite(g);                   //draws the main sprite
+        player.drawSprite(g);                   //draws the main player
         
-        Sprite enemy = spawner.spawnEnemy();   //spawn a random sprite
-        drawEnemy(enemy, g);    //perform basic enemy draw
-        spawner.drawWeapon(g);
+        Sprite enemy = spawner.spawnEnemy();   //spawn a random enemy
+        drawEnemy(enemy, g);    //draw enemy on screen
+        spawner.drawWeapon(g);   
         
         spawner.checkDeathByWeapon(enemy);   //call function to check if currentWeapon intersected currentEnemy
         
         updateGameSpeed(); //accelerate game on every paint...
-        ScoreKeeper.drawScore(g);
+        ScoreKeeper.drawScore(g);   //draws score on screen
         if(gameOver) {
-            g.setFont(Config.largeFont);
+            g.setFont(Config.largeFont);    //draws game over message
             g.setColor(Color.RED);
             g.drawString(Config.gameOver, Config.gameOverX, Config.gameOverY);
             g.setColor(Color.BLACK);
         }
-        if(isGamePaused()) g.drawString(Config.help, Config.helpX, Config.helpY);
+        if(isGamePaused()) g.drawString(Config.help, Config.helpX, Config.helpY);   //draws game paused message
     }
     private boolean rising = false;
     private void updateGameSpeed() {

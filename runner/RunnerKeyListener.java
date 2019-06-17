@@ -25,14 +25,15 @@ public class RunnerKeyListener implements java.awt.event.KeyListener {
                 if(!g.isGamePaused() && g.isGameOver()) g.restartGame();
             } break;
             case Config.pauseKey: {
-                if(!g.isGameOver() && !g.isGamePaused()) {
-                    g.paused = true;
-                    g.refresh.stop();
-                    g.repaint();
-                } else {
-                    g.paused = false;
-                    g.refresh.start();
-                }
+                if(!g.isGameOver())
+                    if(!g.isGamePaused()) {
+                        g.paused = true;
+                        g.refresh.stop();
+                        g.repaint();
+                    } else {
+                        g.paused = false;
+                        g.refresh.start();
+                    }
             } break;
             default: System.out.println("Key pressed: " + e.getKeyChar());
         }
