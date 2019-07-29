@@ -33,7 +33,7 @@ This project can be easily executed by opening a _terminal/CMD_ at the _project 
 
 ``` bash
 $ javac runner/*.java
-$ jar cvfm Runner.jar MANIFEST.MF runner/* lib/* res/*
+$ jar cvfm Runner.jar MANIFEST.MF runner/*.class lib/* res/*
 $ java -jar Runner.jar
 ```
 
