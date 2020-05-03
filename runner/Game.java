@@ -72,7 +72,7 @@ public class Game extends JPanel implements ActionListener {
         drawEnemy(enemy, g);    //draw enemy on screen
         spawner.drawWeapon(g);   
         
-        spawner.checkDeathByWeapon(enemy);   //call function to check if currentWeapon intersected currentEnemy
+        spawner.gameOver(enemy);   //call function to check if currentWeapon intersected currentEnemy
         
         updateGameSpeed(); //accelerate game on every paint...
         ScoreKeeper.drawScore(g);   //draws score on screen

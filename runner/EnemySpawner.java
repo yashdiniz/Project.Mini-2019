@@ -69,7 +69,7 @@ class EnemySpawner {
         }
     }
     //this function kills a sprite if current weapon collides with enemy
-    void checkDeathByWeapon(Sprite enemy) {
+    void gameOver(Sprite enemy) {
         if(currentWeapon!=null) {
             currentWeapon.updateSprite((float)Config.weaponSpeed);  //update the weapon to move...
             if((waterEnemy.intersects(fireWeapon) || fireEnemy.intersects(waterWeapon))
