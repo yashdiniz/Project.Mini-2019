@@ -14,7 +14,7 @@ import javax.sound.sampled.*;
 
 public class Game extends JPanel implements ActionListener {
     private boolean gameOver = false;
-    boolean paused = false;    //this flag will store whether game is over, or paused
+    boolean paused = true;    //this flag will store whether game is paused (also when game over)
     private static BufferedImage background;
     //this custom class holds various basic definitions of sprites on screen(remember, all these will be reusable!)
     private static Sprite player;
@@ -23,7 +23,7 @@ public class Game extends JPanel implements ActionListener {
     private static double delay = Config.defaultDelay;  //default delay value when game starts
     private static double acceleration = Config.defaultAcceleration; //rate at which to decrease the delay(thus increaing difficulty)
     
-    private static EnemySpawner spawner;   //bject,the spawner will spawn enemies, and check the player's weapon dispatched
+    private static EnemySpawner spawner;   //the spawner will spawn enemies, and check the player's weapon dispatched
     
     //this constructor initialises the JPanel and it's components
     Game() {
@@ -72,7 +72,7 @@ public class Game extends JPanel implements ActionListener {
         drawEnemy(enemy, g);    //draw enemy on screen
         spawner.drawWeapon(g);   
         
-        spawner.gameOver(enemy);   //call function to check if currentWeapon intersected currentEnemy
+        spawner.checkDeathByWeapon(enemy);   //call function to check if currentWeapon intersected currentEnemy
         
         updateGameSpeed(); //accelerate game on every paint...
         ScoreKeeper.drawScore(g);   //draws score on screen

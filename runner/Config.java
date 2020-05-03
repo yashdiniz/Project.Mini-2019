@@ -26,14 +26,14 @@ class Config {
     //these constants hold the frame width and height
     static final int frameWidth = 700, frameHeight = 270;
     //these constants holds the help message to be shown at bottom of game
-    static final String help = "PAUSED. Press A to throw water weapon, and F to throw fire weapon.";
-    static final int helpX = (Config.frameWidth/2)-250, helpY = 50;
+    static final String help = "Press spacebar to start. Press A to throw water weapon, and F to throw fire weapon.";
+    static final int helpX = (Config.frameWidth/2)-300, helpY = 50;
     //these constants hold the details of the game over message
     static final String gameOver = "GAME OVER. Press N for new game.";
     static final int gameOverX = (Config.frameWidth/2)-250, gameOverY = 50;
     //these constants hold the details of the high score message
     static final String scoreString = "HIGH: ";
-    static final int scoreX = 20, scoreY = 20;
+    static final int scoreX = 10, scoreY = 10;
     //these constants hold the details for the tiles
     static final String tilesImagePath = relativeRoot + "res/tileslow.png";//../res/tiles.png";
     static final String bkgImagePath = relativeRoot + "res/bkgnd.png";//"../res/bkgnd.png";
