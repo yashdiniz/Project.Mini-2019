@@ -30,10 +30,10 @@ class Config {
     static final int helpX = (Config.frameWidth/2)-250, helpY = 50;
     //these constants hold the details of the game over message
     static final String gameOver = "GAME OVER. Press N for new game.";
-    static final int gameOverX = (Config.frameWidth/2)-250, gameOverY = 50;
+    static final int gameOverX = (Config.frameWidth/2)-175, gameOverY = 50;
     //these constants hold the details of the high score message
     static final String scoreString = "HIGH: ";
-    static final int scoreX = 20, scoreY = Config.frameHeight-35;
+    static final int scoreX = 10, scoreY = 20;
     //these constants hold the details for the tiles
     static final String tilesImagePath = relativeRoot + "res/tileslow.png";//../res/tiles.png";
     static final String bkgImagePath = relativeRoot + "res/bkgnd.png";//"../res/bkgnd.png";
@@ -48,20 +48,19 @@ class Config {
     static final int awaterX = 370, awaterY = 0, awaterW = 38, awaterH = 150;
     
     // These values will hold a constant ceiling frame rate...
-    private static final float frameRate = 15;
+    private static final float frameRate = 60;
     static final float delta = 1/frameRate; // Actually supposed to be dynamic, but being naive for now
     
-    static final float defaultAcceleration = 0.007f;
-    // static final float defaultDelay = 16;
-    // static final float easeOfGame = 1;
-    // static final float diffOfGame = 15;
+    // these values hold the acceleration (in pixels per second per second)
+    private static final float acceleration = 15;
+    static final float defaultAcceleration = delta * acceleration;
     
     //these constants hold the speed range of enemy movement (in pixels per second)
-    static final int minEnemySpeed = 20;
-    static final int maxEnemySpeed = 40;
+    static final float minEnemySpeed = 240;
+    static final float maxEnemySpeed = 480;
     
     //this constant holds the speed of weapon movement (in pixels per second)
-    static final int weaponSpeed = -40;   //against the normal movement, hence negative
+    static final float weaponSpeed = -480;   //against the normal movement, hence negative
     
     //this variable holds the player position
     static final int playerXpos = 20, playerYpos = 80;

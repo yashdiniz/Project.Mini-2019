@@ -14,17 +14,16 @@ import javax.sound.sampled.*;
 
 public class Game extends JPanel implements ActionListener {
     private boolean gameOver = false;
-    boolean paused = false;    //this flag will store whether game is over, or paused
+    boolean paused = true;    //this flag will store whether game is over, or paused
     private static BufferedImage background;
     //this custom class holds various basic definitions of sprites on screen(remember, all these will be reusable!)
     private static Sprite player;
     javax.swing.Timer refresh;  //refreshes the frame per second at 60fps
     
-    // private static double delay = Config.defaultDelay;  //default delay value when game starts
     private static float acceleration = Config.defaultAcceleration; //rate at which to decrease the delay(thus increaing difficulty)
     private static float enemySpeed = Config.minEnemySpeed;
     
-    private static EnemySpawner spawner;   //bject,the spawner will spawn enemies, and check the player's weapon dispatched
+    private static EnemySpawner spawner;   //the spawner will spawn enemies, and check the player's weapon dispatched
     
     //this constructor initialises the JPanel and it's components
     Game() {
@@ -55,14 +54,13 @@ public class Game extends JPanel implements ActionListener {
             //initialises the spawner
             spawner = new EnemySpawner(waterWeapon, waterEnemy, fireWeapon, fireEnemy);
             
-            refresh = new javax.swing.Timer((int)Config.delta*1000, this);  //Timer is used to generate actionEvents at delay intervals...
+            refresh = new javax.swing.Timer((int)(Config.delta*1000), this);  //Timer is used to generate actionEvents at delay intervals...
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
         playSound(Config.gameStartSound);     //play the game start audio
     }
-    
     @Override
     public void paint(Graphics g) {
         g.drawImage(background, 0, 0, null);     //draws the background
@@ -84,29 +82,19 @@ public class Game extends JPanel implements ActionListener {
             g.setColor(Color.BLACK);
         }
         if(isGamePaused()) g.drawString(Config.help, Config.helpX, Config.helpY);   //draws game paused message
-    }
-    // private boolean rising = false; 
+    } 
     private void updateGameSpeed() {
         if(!gameOver && !paused) {    //meaning,the game is being played
             refresh.start();                        //start timer (if not already started)
-            System.out.println("Enemy speed: " + enemySpeed);
+            System.out.print("\tEnemy speed: " + enemySpeed);
             //accelerate/decelerate the game based on whether the game is being made easy or tough
-            if((enemySpeed >= Config.minEnemySpeed /*&& !rising*/) && (enemySpeed <= Config.maxEnemySpeed /*&& rising*/))
-                enemySpeed -= acceleration;
+            if(enemySpeed >= Config.minEnemySpeed && enemySpeed <= Config.maxEnemySpeed)
+                enemySpeed += acceleration;
             else {
-                // rising = !rising;
-                acceleration = -acceleration;
+                acceleration = -acceleration;   // flip acceleration
+                enemySpeed += acceleration; // and bring enemySpeed back into range
             }
-            // if((Math.floor(delay) >= Config.easeOfGame /*&& !rising*/) || (Math.floor(delay) <= Config.diffOfGame /*&& rising*/))
-            //     refresh.setDelay((int)(delay-=acceleration));   // speed up the game
-            // else {
-            //     rising = !rising;
-            //     acceleration = -acceleration;      //begin decelerating(until upper limit)
-            // }
-        } else {
-            refresh.stop();                          //stop timer (if game over)
-            // rising = false;
-        }
+        } else refresh.stop();                          //stop timer (if game over)
     }
     private void drawEnemy(Sprite enemy, Graphics g) {
         if(enemy != null) {
@@ -129,7 +117,7 @@ public class Game extends JPanel implements ActionListener {
     }
     void spawnWeapon(Config.Weapon w) {
         spawner.spawnWeapon(w);            //spawns the weapon
-        playSound(Config.weaponYieldSound); //play the weapon yield sound
+        if(!paused && !gameOver) playSound(Config.weaponYieldSound); //play the weapon yield sound
     }
     private static synchronized void playSound(String path) {    //downloads audio to ram,clip.start plays it
         //source: https://stackoverflow.com/a/26318
@@ -147,15 +135,17 @@ public class Game extends JPanel implements ActionListener {
         ScoreKeeper.resetScore();    //reset highScore for a new game
         gameOver = false;
         spawner.resetSprites();      //resets sprites for the new game
-        // delay = Config.defaultDelay;    //reset delay
         acceleration = Config.defaultAcceleration;  //reset acceleration 
         enemySpeed = Config.minEnemySpeed;  // reset enemy speed
         playSound(Config.gameStartSound);     //play the game start audio
         refresh.start();
     }
+    private static long time = System.nanoTime();
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.print("\rFPS: " + 1000000000l/(System.nanoTime() - time));
         repaint();  //repaint upon action, which will be invoked by Timer(in constructor)
         this.requestFocus();                    //request focus to game panel
+        time = System.nanoTime();
     }
 }
