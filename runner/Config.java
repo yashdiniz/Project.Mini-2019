@@ -26,21 +26,21 @@ class Config {
     //these constants hold the frame width and height
     static final int frameWidth = 700, frameHeight = 270;
     //these constants holds the help message to be shown at bottom of game
-    static final String help = "PAUSED. Press A to throw water weapon, and F to throw fire weapon.";
-    static final int helpX = (Config.frameWidth/2)-250, helpY = 50;
+    static final String help = "Press spacebar to start. Press A to throw water weapon, and F to throw fire weapon.";
+    static final int helpX = (Config.frameWidth/2)-300, helpY = 50;
     //these constants hold the details of the game over message
     static final String gameOver = "GAME OVER. Press N for new game.";
     static final int gameOverX = (Config.frameWidth/2)-175, gameOverY = 50;
     //these constants hold the details of the high score message
     static final String scoreString = "HIGH: ";
-    static final int scoreX = 10, scoreY = 20;
+    static final int scoreX = 10, scoreY = 10;
     //these constants hold the details for the tiles
     static final String tilesImagePath = relativeRoot + "res/tileslow.png";//../res/tiles.png";
     static final String bkgImagePath = relativeRoot + "res/bkgnd.png";//"../res/bkgnd.png";
     
     static final long randomSeed = 1234l;    //the seed of the randomiser
     
-    //these constants will hold the tile X,Y,width and heights of various sprites
+    //these constants will hold the tile X,Y,width and heights of various sprites within the image
     static final int playerX = 0, playerY = 0, playerW = 98, playerH = 150;
     static final int fireX = 105, fireY = 0, fireW = 110, fireH = 150;
     static final int waterX = 216, waterY = 0, waterW = 110, waterH = 150;
@@ -62,7 +62,7 @@ class Config {
     //this constant holds the speed of weapon movement (in pixels per second)
     static final float weaponSpeed = -480;   //against the normal movement, hence negative
     
-    //this variable holds the player position
+    //this variable holds the player position on the canvas
     static final int playerXpos = 20, playerYpos = 80;
     static final int weaponXpos = (playerXpos + playerW), weaponYpos = (playerYpos);
     
