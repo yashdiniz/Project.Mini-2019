@@ -20,8 +20,9 @@ public class Game extends JPanel implements ActionListener {
     private static Sprite player;
     javax.swing.Timer refresh;  //refreshes the frame per second at 60fps
     
-    private static double delay = Config.defaultDelay;  //default delay value when game starts
-    private static double acceleration = Config.defaultAcceleration; //rate at which to decrease the delay(thus increaing difficulty)
+    // private static double delay = Config.defaultDelay;  //default delay value when game starts
+    private static float acceleration = Config.defaultAcceleration; //rate at which to decrease the delay(thus increaing difficulty)
+    private static float enemySpeed = Config.minEnemySpeed;
     
     private static EnemySpawner spawner;   //bject,the spawner will spawn enemies, and check the player's weapon dispatched
     
@@ -54,7 +55,7 @@ public class Game extends JPanel implements ActionListener {
             //initialises the spawner
             spawner = new EnemySpawner(waterWeapon, waterEnemy, fireWeapon, fireEnemy);
             
-            refresh = new javax.swing.Timer((int)delay, this);  //Timer is used to generate actionEvents at delay intervals...
+            refresh = new javax.swing.Timer((int)Config.delta*1000, this);  //Timer is used to generate actionEvents at delay intervals...
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -84,28 +85,34 @@ public class Game extends JPanel implements ActionListener {
         }
         if(isGamePaused()) g.drawString(Config.help, Config.helpX, Config.helpY);   //draws game paused message
     }
-    private boolean rising = false;
+    // private boolean rising = false; 
     private void updateGameSpeed() {
         if(!gameOver && !paused) {    //meaning,the game is being played
             refresh.start();                        //start timer (if not already started)
-            System.out.println("Delay: " + delay);
+            System.out.println("Enemy speed: " + enemySpeed);
             //accelerate/decelerate the game based on whether the game is being made easy or tough
-            if((Math.floor(delay) >= Config.easeOfGame && !rising) || (Math.floor(delay) <= Config.diffOfGame && rising))
-                refresh.setDelay((int)(delay-=acceleration));   // speed up the game
+            if((enemySpeed >= Config.minEnemySpeed /*&& !rising*/) && (enemySpeed <= Config.maxEnemySpeed /*&& rising*/))
+                enemySpeed -= acceleration;
             else {
-                rising = !rising;
-                acceleration = -acceleration;      //begin decelerating(until upper limit)
+                // rising = !rising;
+                acceleration = -acceleration;
             }
+            // if((Math.floor(delay) >= Config.easeOfGame /*&& !rising*/) || (Math.floor(delay) <= Config.diffOfGame /*&& rising*/))
+            //     refresh.setDelay((int)(delay-=acceleration));   // speed up the game
+            // else {
+            //     rising = !rising;
+            //     acceleration = -acceleration;      //begin decelerating(until upper limit)
+            // }
         } else {
             refresh.stop();                          //stop timer (if game over)
-            rising = false;
+            // rising = false;
         }
     }
     private void drawEnemy(Sprite enemy, Graphics g) {
         if(enemy != null) {
             enemy.drawSprite(g);             //paint the enemy
             //enemy.drawBounds(g);
-            enemy.updateSprite((float)Config.enemySpeed);   //update the enemy type when it approaches
+            enemy.updateSprite(enemySpeed);   //update the enemy type when it approaches
             if(enemy.spriteX < -Config.playerW) spawner.SpriteKilled(enemy);    //kill the enemy if it leaves the screen
             if(enemy.intersects(player)) endGame();   //game over if enemy collides with player
         }
@@ -140,8 +147,9 @@ public class Game extends JPanel implements ActionListener {
         ScoreKeeper.resetScore();    //reset highScore for a new game
         gameOver = false;
         spawner.resetSprites();      //resets sprites for the new game
-        delay = Config.defaultDelay;    //reset delay
+        // delay = Config.defaultDelay;    //reset delay
         acceleration = Config.defaultAcceleration;  //reset acceleration 
+        enemySpeed = Config.minEnemySpeed;  // reset enemy speed
         playSound(Config.gameStartSound);     //play the game start audio
         refresh.start();
     }

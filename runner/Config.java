@@ -47,17 +47,21 @@ class Config {
     static final int afireX = 330, afireY = 0, afireW = 38, afireH = 150;
     static final int awaterX = 370, awaterY = 0, awaterW = 38, awaterH = 150;
     
-    //these constants hold the basic frame delays and accelration...
+    // These values will hold a constant ceiling frame rate...
+    private static final float frameRate = 15;
+    static final float delta = 1/frameRate; // Actually supposed to be dynamic, but being naive for now
+    
     static final float defaultAcceleration = 0.007f;
-    static final float defaultDelay = 16;
-    static final float easeOfGame = 1;
-    static final float diffOfGame = 15;
+    // static final float defaultDelay = 16;
+    // static final float easeOfGame = 1;
+    // static final float diffOfGame = 15;
     
-    //this constant holds the speed of enemy movement
-    static final int enemySpeed = 4;
+    //these constants hold the speed range of enemy movement (in pixels per second)
+    static final int minEnemySpeed = 20;
+    static final int maxEnemySpeed = 40;
     
-    //this constant holds the speed of weapon movement
-    static final int weaponSpeed = -8;   //against the normal movement, hence negative
+    //this constant holds the speed of weapon movement (in pixels per second)
+    static final int weaponSpeed = -40;   //against the normal movement, hence negative
     
     //this variable holds the player position
     static final int playerXpos = 20, playerYpos = 80;
