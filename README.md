@@ -17,9 +17,10 @@ The project also has the score module, that saves its data into an SQL database(
 ## Project Configuration
 
 This project contains a `Config.java` file, which contains a public class with all the constants you can edit! It's amazing the types of things that can be modified, and the flexibility that awaits to be discovered. Another few important things;
- + The project resources, like fonts(`.ttf`), audio(`.wav`), and images(`.png`) are in the `res/` folder of the project directory.
- + The SQL connector library, in a jar file, in the `lib/` folder of the project directory.
- + The actual code, in the `runner/` folder, under the `runner.*` package.
+
+- The project resources, like fonts(`.ttf`), audio(`.wav`), and images(`.png`) are in the `res/` folder of the project directory.
+- The SQL connector library, in a jar file, in the `lib/` folder of the project directory.
+- The actual code, in the `runner/` folder, under the `runner.*` package.
 
 The `tileslow.png` file, is designed to contain all the player images(as a single image), and the image data is loaded in the form of _tiles_ into the program. This means that subimages of the main image are created. Not only does this save memory, but it also prevents the creation of too many streams, which turns out to be largely beneficial. Also, a lot of rectangular bound configuration variables need to be modified as well(found in the `Config.java` file)...
 
@@ -32,9 +33,9 @@ This means you are expected to have an SQL server, with an account bearing the u
 This project can be easily executed by opening a _terminal/CMD_ at the _project root_ directory, and typing in the following commands,
 
 ``` bash
-$ javac runner/*.java
-$ jar cvfm Runner.jar MANIFEST.MF runner/*.class lib/* res/*
-$ java -jar Runner.jar
+javac runner/*.java
+jar cvfm Runner.jar MANIFEST.MF runner/*.class lib/* res/*
+java -jar Runner.jar
 ```
 
 This should run the project as an executable jar file.
