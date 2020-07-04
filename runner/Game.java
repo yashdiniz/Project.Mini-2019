@@ -146,7 +146,7 @@ public class Game extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // dynamically adapt delta(and indirectly frame rate) depending on current device performance
         // use the ceiling frame rate set in Config as a limiting factor
-        Config.delta = ((System.nanoTime() - time)/1000000000f) < tempDelta // if delta is around recommended levels
+        Config.delta = ((System.nanoTime() - time)/1000000000f) < tempDelta*2 // if delta is around recommended levels
                         ? (System.nanoTime() - time)/1000000000f    // recalculate delta 
                         : tempDelta;    // otherwise reset delta if game was paused (preventing compensation for a large delay between frames)
         System.out.print("\rFPS: " + 1/Config.delta);
