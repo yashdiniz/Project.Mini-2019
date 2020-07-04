@@ -48,8 +48,8 @@ class Config {
     static final int awaterX = 370, awaterY = 0, awaterW = 38, awaterH = 150;
     
     // These values will hold a constant ceiling frame rate...
-    private static final float frameRate = 60;
-    static final float delta = 1/frameRate; // Actually supposed to be dynamic, but being naive for now
+    static final float frameRate = 60;
+    static float delta = 1/frameRate;   // will dynamically update, but reset to this default
     
     // these values hold the acceleration (in pixels per second per second)
     private static final float acceleration = 15;

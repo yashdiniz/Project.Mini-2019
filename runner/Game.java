@@ -66,13 +66,13 @@ public class Game extends JPanel implements ActionListener {
         g.drawImage(background, 0, 0, null);     //draws the background
         //player.drawBounds(g);
         player.drawSprite(g);                   //draws the main player
-        
-        Sprite enemy = spawner.spawnEnemy();   //spawn a random enemy
-        drawEnemy(enemy, g);    //draw enemy on screen
-        spawner.drawWeapon(g);   
-        
-        spawner.checkDeathByWeapon(enemy);   //call function to check if currentWeapon intersected currentEnemy
-        
+        if(!gameOver && !paused) {
+            Sprite enemy = spawner.spawnEnemy();   //spawn a random enemy
+            drawEnemy(enemy, g);    //draw enemy on screen
+            spawner.drawWeapon(g);   
+            
+            spawner.checkDeathByWeapon(enemy);   //call function to check if currentWeapon intersected currentEnemy
+        }    
         updateGameSpeed(); //accelerate game on every paint...
         ScoreKeeper.drawScore(g);   //draws score on screen
         if(gameOver) {
@@ -117,7 +117,7 @@ public class Game extends JPanel implements ActionListener {
     }
     void spawnWeapon(Config.Weapon w) {
         spawner.spawnWeapon(w);            //spawns the weapon
-        if(!paused && !gameOver) playSound(Config.weaponYieldSound); //play the weapon yield sound
+        playSound(Config.weaponYieldSound); //play the weapon yield sound
     }
     private static synchronized void playSound(String path) {    //downloads audio to ram,clip.start plays it
         //source: https://stackoverflow.com/a/26318
@@ -141,9 +141,15 @@ public class Game extends JPanel implements ActionListener {
         refresh.start();
     }
     private static long time = System.nanoTime();
+    private static float tempDelta = 1/Config.frameRate;
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.print("\rFPS: " + 1000000000l/(System.nanoTime() - time));
+        // dynamically adapt delta(and indirectly frame rate) depending on current device performance
+        // use the ceiling frame rate set in Config as a limiting factor
+        Config.delta = ((System.nanoTime() - time)/1000000000f) < tempDelta // if delta is around recommended levels
+                        ? (System.nanoTime() - time)/1000000000f    // recalculate delta 
+                        : tempDelta;    // otherwise reset delta if game was paused (preventing compensation for a large delay between frames)
+        System.out.print("\rFPS: " + 1/Config.delta);
         repaint();  //repaint upon action, which will be invoked by Timer(in constructor)
         this.requestFocus();                    //request focus to game panel
         time = System.nanoTime();
