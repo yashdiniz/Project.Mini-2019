@@ -1,6 +1,8 @@
 # Java Mini Project 2019 - Logic Maze Runner
 ![License](https://img.shields.io/github/license/yashdiniz/Project.Mini-2019)
 
+**This repository is now archived.**
+
 This code is simply an example of the projects our college tells us to perform. They help us illustrate our skills and interest in computer graphics, database integration and object oriented design, as a sophomore, helping the teachers orient us in a better direction.
 
 We have tried our best to make sure that comprehending this project is greatly simplified; by use of this README, and the internal documentation within the code.
